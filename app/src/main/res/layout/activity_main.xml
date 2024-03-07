@@ -4,6 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="mainActivityNesnesi"
+            type="com.example.mvvmkullanimi.MainActivity" />
+        <variable
+            name="hesaplamaSonucu"
+            type="String" />
+        <import type="android.view.View"/>
 
     </data>
 
@@ -17,7 +24,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="TextView"
+            android:text="@{hesaplamaSonucu}"
+            android:textColor="@{Integer.parseInt(hesaplamaSonucu)>10 ? @color/kirmizi:@color/mavi }"
+            android:visibility="@{Integer.parseInt(hesaplamaSonucu)>0 ? View.VISIBLE : View.INVISIBLE"
             android:textSize="34sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -30,8 +39,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="90dp"
             android:ems="10"
+            android:hint="Sayı 1"
             android:inputType="text"
-            android:text="Sayı 1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,8 +52,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="55dp"
             android:ems="10"
+            android:hint="Sayı 2"
             android:inputType="text"
-            android:text="Sayı 2 "
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -56,6 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="76dp"
             android:text="+"
+            android:onClick="@{()->mainActivityNesnesi.buttonToplamaTikla(editTextTextSayi1.getText().toString(),editTextTextSayi2.getText().toString())}"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/buttonCarpma"
             app:layout_constraintHorizontal_bias="0.5"
@@ -68,6 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="76dp"
             android:text="x"
+            android:onClick="@{()->mainActivityNesnesi.buttonCarpmaTikla(editTextTextSayi1.getText().toString(),editTextTextSayi2.getText().toString())}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/buttonToplama"
